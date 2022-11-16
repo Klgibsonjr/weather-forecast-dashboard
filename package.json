@@ -1,0 +1,20 @@
+{
+  "name": "weather-forecast-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./assets/index.css -o ./assets/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klgibsonjr/weather-forecast-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Klgibsonjr/weather-forecast-dashboard/issues"
+  },
+  "homepage": "https://github.com/Klgibsonjr/weather-forecast-dashboard#readme"
+}
