@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/tailwind.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>Weather Forecast Dashboard</title>
   </head>
   <body>
@@ -13,12 +21,86 @@
         <h1 class="text-5xl text-center font-bold">Weather Forecast Dashboard</h1>
       </div>
     </header>
-    <section class="w-1/4 border-b-4 m-2">
-      <div class="max-w-[1240px] flex flex-col w-full m-2">
-        <h1 class="text-4xl font-bold text-center">Search for a City:</h1>
-        <input class="border mx-6 mt-4 p-4 rounded-md text-xl" type="text" placeholder="Search for Your City Here..." />
-        <button class="bg-blue-500 mx-6 my-6 p-4 rounded-md text-2xl">Search</button>
-      </div>
+    <section class="flex w-full">
+      <section class="max-w-[1240px] w-1/4">
+        <section class="w-full border-b-4 m-2">
+          <div class="flex flex-col w-full m-2">
+            <h1 class="text-4xl font-bold text-center">Search for a City:</h1>
+            <input class="border mx-6 mt-4 p-4 rounded-md text-xl" type="text" placeholder="Search for Your City Here..." />
+            <button class="bg-blue-500 mx-6 my-6 p-4 rounded-md text-2xl">Search</button>
+          </div>
+        </section>
+        <section class="w-full mx-4">
+          <ul class="flex flex-col mx-2 my-4">
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Los Angeles</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">San Francisco</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">New York</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Chicago</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Boston</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Seattle</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Atlanta</li>
+            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Orlando</li>
+          </ul>
+        </section>
+      </section>
+      <section class="w-3/4 mx-6 my-6">
+        <div class="border-4 border-slate-600 rounded-md">
+          <h1 class="text-4xl font-bold mx-4 my-4">Rancho Cucamonga (11/15/2202)</h1>
+          <ul>
+            <li class="text-2xl mx-4 my-6">Temp: 76.62 degrees</li>
+            <li class="text-2xl mx-4 my-6">Wind: 8.43 MPH</li>
+            <li class="text-2xl mx-4 my-6">Humidity: 44%</li>
+          </ul>
+        </div>
+        <h1 class="text-5xl font-bold mx-4 my-4">5-Day Forecast:</h1>
+        <div class="flex justify-between mx-4 my-8">
+          <div class="bg-blue-900">
+            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
+            <ul class="my-2 p-4">
+              <icon></icon>
+              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
+              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
+              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900">
+            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
+            <ul class="my-2 p-4">
+              <icon></icon>
+              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
+              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
+              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900">
+            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
+            <ul class="my-2 p-4">
+              <icon></icon>
+              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
+              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
+              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900">
+            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
+            <ul class="my-2 p-4">
+              <icon></icon>
+              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
+              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
+              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900">
+            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
+            <ul class="my-2 p-4">
+              <icon></icon>
+              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
+              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
+              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </section>
   </body>
 </html>
