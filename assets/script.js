@@ -12,7 +12,7 @@ let searchResults = function () {
   let userSearch = searchInputElm.value;
   let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
   weatherCoordsApi = weatherCoordsApi + '?q=' + userSearch + '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
-  console.log(weatherCoordsApi);
+  // console.log(weatherCoordsApi);
 
   fetch(weatherCoordsApi)
     .then(function (response) {
@@ -21,13 +21,26 @@ let searchResults = function () {
     .then(function (response) {
       console.log(response);
 
-      let weatherData = [];
-
       let latitude = response[0].lat;
       console.log(latitude);
 
       let longitude = response[0].lon;
       console.log(longitude);
+
+      let weatherForecastApi = 'https://api.openweathermap.org/data/2.5/forecast';
+      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&limit=5&appid=f3dd875ac81e50aaada068245357b0ee';
+      console.log(weatherForecastApi);
+
+      fetch(weatherForecastApi)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          console.log(response.list[0].main);
+        });
+
+      let temp = response[0].main.temp;
+      let humidity = response[0].main.humidity;
     });
 };
 
