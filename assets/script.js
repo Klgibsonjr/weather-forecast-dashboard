@@ -1,23 +1,39 @@
 // Variables declared to HTML elements for DOM manipulation
-let searchInputElm = document.getElementById('search-input');
-let searchBtnElm = document.getElementById('search-btn');
-let searchHistoryElm = document.getElementById('search-history');
-let searchResultElm = document.getElementById('search-result');
-let forecastResultElm = document.getElementById('forecast-result');
+const searchBtnElm = document.getElementById('search-btn');
+const searchHistoryElm = document.getElementById('search-history');
+const searchResultElm = document.getElementById('search-result');
+const forecastResultElm = document.getElementById('forecast-result');
 
 // Event listeners applied to search button
-searchBtnElm.addEventListener('click', function (event) {
-  console.log(event);
-});
+searchBtnElm.addEventListener('click', function (event) {});
 
 let searchResults = function () {
-  let searchInputElm = document.getElementById('search-input');
+  const searchInputElm = document.getElementById('search-input');
   let userSearch = searchInputElm.value;
-  let weatherApi = 'https://api.openweathermap.org/data/2.5/forecast';
-  weatherApi = weatherApi + '?q=' + userSearch + '&appid=f3dd875ac81e50aaada068245357b0ee';
+  let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
+  weatherCoordsApi = weatherCoordsApi + '?q=' + userSearch + '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
+  console.log(weatherCoordsApi);
+
+  fetch(weatherCoordsApi)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response);
+
+      let weatherData = [];
+
+      let latitude = response[0].lat;
+      console.log(latitude);
+
+      let longitude = response[0].lon;
+      console.log(longitude);
+    });
 };
 
-// var weatherCardContainer = document.querySelector('#weather-card-container');
+searchBtnElm.addEventListener('click', searchResults);
+
+// let weatherCardContainer = document.querySelector('#weather-card-container');
 // var weatherData = [{}, {}, {}, {}] // Pretend like this has data,
 
 // for(var i = 0 ; i < weatherData.length; i++) {
