@@ -9,3 +9,9 @@ let forecastResultElm = document.getElementById('forecast-result');
 searchBtnElm.addEventListener('click', function (event) {
   console.log(event);
 });
+
+// let weatherData = [{}]
+
+// for (let i = 0; i < weatherData.length; i++) {
+//   let weatherCard = document.createElement('div');
+//   weatherCard.classList = 'styling of elements goes here;
