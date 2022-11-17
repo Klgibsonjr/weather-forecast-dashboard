@@ -28,7 +28,7 @@ let searchResults = function () {
       console.log(longitude);
 
       let weatherForecastApi = 'https://api.openweathermap.org/data/2.5/forecast';
-      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&limit=5&appid=f3dd875ac81e50aaada068245357b0ee';
+      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&appid=f3dd875ac81e50aaada068245357b0ee';
       console.log(weatherForecastApi);
 
       fetch(weatherForecastApi)
@@ -36,11 +36,12 @@ let searchResults = function () {
           return response.json();
         })
         .then(function (response) {
-          console.log(response.list[0].main);
+          console.log(response.list[0].wind.speed);
         });
 
-      let temp = response[0].main.temp;
-      let humidity = response[0].main.humidity;
+      let temp = response.list[0].main.temp;
+      let humidity = response.list[0].main.humidity;
+      let wind = response.list[0].main.wind.speed;
     });
 };
 
