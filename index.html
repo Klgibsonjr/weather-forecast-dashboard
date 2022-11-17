@@ -12,85 +12,85 @@
   <body>
     <header>
       <div class="bg-gradient-to-r from-blue-400 to-blue-900 py-8">
-        <h1 class="text-5xl text-center font-bold">Weather Forecast Dashboard</h1>
+        <h1 class="text-4xl md:text-5xl text-center font-bold">Weather Forecast Dashboard</h1>
       </div>
     </header>
     <section class="flex w-full">
       <section class="max-w-[1240px] w-1/4">
         <section class="w-full border-b-4 m-2">
           <div class="flex flex-col w-full m-2">
-            <h1 class="text-4xl font-bold text-center">Search for a City:</h1>
-            <input class="border mx-6 mt-4 p-4 rounded-md text-xl" id="search-input" type="text" placeholder="Search for Your City Here..." />
-            <button class="bg-blue-500 mx-6 my-6 p-4 rounded-md text-2xl" id="search-btn">Search</button>
+            <h1 class="text-2xlxl md:text-4xl font-bold text-center">Search for a City:</h1>
+            <input class="border mx-2 p-2 mt-2 md:mx-6 md:mt-4 md:p-4 rounded-md md:text-xl" id="search-input" type="text" placeholder="Enter City Here..." />
+            <button class="text-xl mx-2 p-2 my-2 bg-blue-500 md:mx-6 md:my-6 md:p-4 rounded-md md:text-2xl" id="search-btn">Search</button>
           </div>
         </section>
         <section class="w-full mx-4">
-          <ul class="flex flex-col mx-2 my-4" id="search-history">
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Los Angeles</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">San Francisco</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">New York</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Chicago</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Boston</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Seattle</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Atlanta</li>
-            <li class="border rounded-md mx-4 my-4 text-center p-4 font-bold text-xl bg-gray-500">Orlando</li>
+          <ul class="flex flex-col mx-2 my-2 md:mx-2 md:my-4" id="search-history">
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Los Angeles</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">San Francisco</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">New York</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Chicago</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Boston</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Seattle</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Atlanta</li>
+            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Orlando</li>
           </ul>
         </section>
       </section>
       <section class="w-3/4 mx-6 my-6">
         <div class="border-4 border-slate-600 rounded-md" id="search-result">
-          <h1 class="text-5xl font-bold mx-4 mt-4 mb-8">Rancho Cucamonga (11/15/2202)</h1>
+          <h1 class="text-xl md:text-5xl font-bold ml-4 mt-4 mb-8">Rancho Cucamonga (11/15/2202) <i class="fa-solid fa-sun text-3xl text-yellow-500 mx-8" id="sun-icon"></i></h1>
           <ul>
-            <li class="text-3xl mx-4 my-8">Temp: 76.62 degrees</li>
-            <li class="text-3xl mx-4 my-8">Wind: 8.43 MPH</li>
-            <li class="text-3xl mx-4 my-8">Humidity: 44%</li>
+            <li class="text-xl mx-2 my-2 md:text-3xl md:mx-4 md:my-8">Temp: 76.62 degrees</li>
+            <li class="text-xl mx-2 my-2 md:text-3xl md:mx-4 md:my-8">Wind: 8.43 MPH</li>
+            <li class="text-xl mx-2 my-2 md:text-3xl md:mx-4 md:my-8">Humidity: 44%</li>
           </ul>
         </div>
-        <h1 class="text-5xl font-bold mx-4 my-4">5-Day Forecast:</h1>
-        <div class="flex justify-between mx-2 my-8" id="forecast-result">
+        <h1 class="text-3xl mx-2 my-4 md:text-5xl font-bold md:mx-4 md:my-4">5-Day Forecast:</h1>
+        <div class="flex flex-col gap-4 md:flex md:flex-col lg:flex lg:flex-row lg:justify-between lg:max-w-[1440px] mx-2 my-8" id="forecast-result">
           <div class="bg-blue-900">
-            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/15/22</h1>
-            <i class="fa-solid fa-sun text-3xl text-white text-center mx-8"></i>
+            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8">11/15/22</h1>
+            <i class="fa-solid fa-sun text-3xl text-yellow-500 mx-8"></i>
             <ul class="my-2 p-4">
-              <li class="text-2xl text-white my-2">Temp: 63.55 degrees</li>
-              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
-              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+              <li class="text-xl my-4 mx-2 md:text-2xl text-white md:my-2">Temp: 63.55 degrees</li>
+              <li class="text-xl mx-2 my-2 md:text-2xl text-white md:my-8">Wind: 3.94 MPH</li>
+              <li class="text-xl mx-2 my-2 md:text-2xl text-white md:mb-4">Humidity: 63%</li>
             </ul>
           </div>
           <div class="bg-blue-900">
-            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/16/22</h1>
-            <i class="fa-solid fa-sun text-3xl text-white text-center mx-8"></i>
+            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8">11/16/22</h1>
+            <i class="fa-solid fa-snowflake text-3xl text-white mx-8" id="snowflake-icon"></i>
             <ul class="my-2 p-4">
-              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
-              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
-              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+              <li class="text-xl my-4 md:text-2xl text-white md:my-8">Temp: 63.55 degrees</li>
+              <li class="text-xl md:text-2xl text-white md:my-8">Wind: 3.94 MPH</li>
+              <li class="text-xl md:text-2xl text-white md:mb-4">Humidity: 63%</li>
             </ul>
           </div>
           <div class="bg-blue-900">
-            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/17/22</h1>
-            <i class="fa-solid fa-sun text-3xl text-white mx-8"></i>
+            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8">11/17/22</h1>
+            <i class="fa-solid fa-wind text-3xl text-white mx-8" id="wind-icon"></i>
             <ul class="my-2 p-4">
-              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
-              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
-              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+              <li class="text-xl my-4 md:text-2xl text-white md:my-8">Temp: 63.55 degrees</li>
+              <li class="md:text-2xl text-white md:my-8">Wind: 3.94 MPH</li>
+              <li class="md:text-2xl text-white md:mb-4">Humidity: 63%</li>
             </ul>
           </div>
           <div class="bg-blue-900">
-            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/18/22</h1>
-            <i class="fa-solid fa-sun text-3xl text-white text-center mx-8"></i>
+            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8">11/18/22</h1>
+            <i class="fa-solid fa-cloud-rain text-3xl text-gray-400 mx-8" id="rain-icon"></i>
             <ul class="my-2 p-4">
-              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
-              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
-              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+              <li class="text-xl my-4 md:text-2xl text-white md:my-8">Temp: 63.55 degrees</li>
+              <li class="md:text-2xl text-white md:my-8">Wind: 3.94 MPH</li>
+              <li class="md:text-2xl text-white md:mb-4">Humidity: 63%</li>
             </ul>
           </div>
           <div class="bg-blue-900">
-            <h1 class="text-3xl font-bold text-white p-6 mx-8">11/19/22</h1>
-            <i class="fa-solid fa-cloud text-3xl text-white mx-8"></i>
+            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8">11/19/22</h1>
+            <i class="fa-solid fa-cloud text-3xl text-gray-500 mx-8" id="cloud-icon"></i>
             <ul class="my-2 p-4">
-              <li class="text-2xl text-white my-8">Temp: 63.55 degrees</li>
-              <li class="text-2xl text-white my-8">Wind: 3.94 MPH</li>
-              <li class="text-2xl text-white mb-4">Humidity: 63%</li>
+              <li class="text-xl my-4 md:text-2xl text-white md:my-8">Temp: 63.55 degrees</li>
+              <li class="md:text-2xl text-white md:my-8">Wind: 3.94 MPH</li>
+              <li class="md:text-2xl text-white md:mb-4">Humidity: 63%</li>
             </ul>
           </div>
         </div>
