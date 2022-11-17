@@ -10,8 +10,18 @@ searchBtnElm.addEventListener('click', function (event) {
   console.log(event);
 });
 
-// let weatherData = [{}]
+let searchResults = function () {
+  let searchInputElm = document.getElementById('search-input');
+  let userSearch = searchInputElm.value;
+  let weatherApi = 'https://api.openweathermap.org/data/2.5/forecast';
+  weatherApi = weatherApi + '?q=' + userSearch + '&appid=f3dd875ac81e50aaada068245357b0ee';
+};
 
-// for (let i = 0; i < weatherData.length; i++) {
-//   let weatherCard = document.createElement('div');
-//   weatherCard.classList = 'styling of elements goes here;
+// var weatherCardContainer = document.querySelector('#weather-card-container');
+// var weatherData = [{}, {}, {}, {}] // Pretend like this has data,
+
+// for(var i = 0 ; i < weatherData.length; i++) {
+//     var weatherCard = document.createElement('div');
+//     weatherCard.classList = 'my-3 d-flex align-items-center';
+//     weatherCardContainer.append(weatherCard)
+// }
