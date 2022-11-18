@@ -15,7 +15,7 @@ let searchResults = function () {
   const searchInputElm = document.getElementById('search-input');
   let userSearch = searchInputElm.value;
   let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
-  weatherCoordsApi = weatherCoordsApi + '?q=' + userSearch + '&limit=&appid=f3dd875ac81e50aaada068245357b0ee&units=imperial';
+  weatherCoordsApi = weatherCoordsApi + '?q=' + userSearch + '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
 
   fetch(weatherCoordsApi)
     .then(function (response) {
@@ -29,10 +29,14 @@ let searchResults = function () {
       let latitude = response[0].lat;
       let longitude = response[0].lon;
 
-      console.log(cityName, latitude, longitude);
+      // console.log(cityName, latitude, longitude);
+      const key = 'f3dd875ac81e50aaada068245357b0ee&units=imperial';
 
       let weatherForecastApi = 'https://api.openweathermap.org/data/2.5/forecast';
-      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&appid=f3dd875ac81e50aaada068245357b0ee';
+      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + key;
+
+      cityNameElm.textContent = cityName + ' ' + dayjs().format('MM/DD/YYYY');
+      icon.append(iconElm);
 
       fetch(weatherForecastApi)
         .then(function (response) {
@@ -42,18 +46,20 @@ let searchResults = function () {
           let temp = response.list[0].main.temp;
           let humidity = response.list[0].main.humidity;
           let wind = response.list[0].wind.speed;
+          let icon = 'http://openweathermap.org/img/wn/' + response.list[0].weather[0].icon + '@2x.png';
+          let iconElm = document.createElement('img');
+          iconElm.setAttribute('src', icon);
 
           console.log(temp);
           console.log(humidity);
           console.log(wind);
           console.log(response);
+          console.log(icon);
 
           tempElm.textContent = 'Temp: ' + temp;
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
         });
-
-      cityNameElm.textContent = cityName + ' ' + dayjs().format('MM/DD/YYYY');
     });
 };
 
