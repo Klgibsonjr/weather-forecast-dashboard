@@ -45,7 +45,8 @@ let searchResults = function () {
       let weatherForecastApi = 'https://api.openweathermap.org/data/2.5/forecast';
       weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + key;
 
-      cityNameElm.textContent = cityName + ' ' + dayjs().format('MM/DD/YYYY');
+      let currentDate = dayjs().format('MM/DD/YYYY');
+      cityNameElm.textContent = cityName + ' ' + currentDate;
 
       fetch(weatherForecastApi)
         .then(function (response) {
@@ -58,13 +59,24 @@ let searchResults = function () {
           let wind = forecast.wind.speed;
           let iconUrl = 'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png';
           let iconElm = document.createElement('img');
+
           iconElm.setAttribute('src', iconUrl);
           cityNameElm.append(iconElm);
-
           tempElm.textContent = 'Temp: ' + temp;
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
         });
+
+      // let forecastData = [cityName, temp, humidity, wind];
+
+      // for (let i = 0; i < forecastData.length; i++) {
+      //   let forecastCardElm = document.getElementById('forecast-card');
+      //   let forecastCardDate = document.createElement('h1');
+      //   forecastCardDate.classList = 'text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8';
+      //   forecastCardElm.classList = 'bg-blue-900 h-max';
+      //   forecastCardDate.append(currentDate);
+      //   forecastResultElm.append(forecastCardElm);
+      // }
     });
 };
 
