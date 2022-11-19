@@ -8,6 +8,7 @@ const tempElm = document.getElementById('temp');
 const windElm = document.getElementById('wind');
 const humidityElm = document.getElementById('humidity');
 const searchInputElm = document.getElementById('search-input');
+const forecastCardElm = document.getElementById('forecast-card');
 
 let formSubmitHander = function (event) {
   event.preventDefault();
@@ -65,6 +66,7 @@ let searchResults = function () {
           tempElm.textContent = 'Temp: ' + temp;
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
+          console.log(weatherForecastApi);
         });
 
       // let forecastData = [cityName, temp, humidity, wind];
@@ -91,3 +93,6 @@ searchBtnElm.addEventListener('click', formSubmitHander);
 //     weatherCard.classList = 'my-3 d-flex align-items-center';
 //     weatherCardContainer.append(weatherCard)
 // }
+
+// for(i = 0; 1 < 5; i++) {
+//   document.getElementById()
