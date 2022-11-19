@@ -54,11 +54,11 @@ let searchResults = function () {
           return response.json();
         })
         .then(function (response) {
-          let forecast = response.list[0];
-          let temp = forecast.main.temp;
-          let humidity = forecast.main.humidity;
-          let wind = forecast.wind.speed;
-          let iconUrl = 'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '@2x.png';
+          let todayForecast = response.list[0];
+          let temp = todayForecast.main.temp;
+          let humidity = todayForecast.main.humidity;
+          let wind = todayForecast.wind.speed;
+          let iconUrl = 'http://openweathermap.org/img/wn/' + todayForecast.weather[0].icon + '@2x.png';
           let iconElm = document.createElement('img');
 
           iconElm.setAttribute('src', iconUrl);
@@ -66,25 +66,29 @@ let searchResults = function () {
           tempElm.textContent = 'Temp: ' + temp;
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
+
           console.log(weatherForecastApi);
+
+          function dayForecast(forecast) {
+            document.querySelector('.weekF').innerHTML = '';
+            for (let i = 5; i < forecast.list.length; i++) {
+              let divCard = document.createElement('div');
+              divCard.setAttribute('class', 'dayF');
+
+              let forecastDate = document.createElement('h1');
+              forecastDate.setAttribute('class', 'date', 'bg-blue-900', 'h-max');
+              forecastDate.innerHTML = currentDate;
+              divCard.appendChild(forecastDate);
+            }
+          }
         });
-
-      // let forecastData = [cityName, temp, humidity, wind];
-
-      // for (let i = 0; i < forecastData.length; i++) {
-      //   let forecastCardElm = document.getElementById('forecast-card');
-      //   let forecastCardDate = document.createElement('h1');
-      //   forecastCardDate.classList = 'text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8';
-      //   forecastCardElm.classList = 'bg-blue-900 h-max';
-      //   forecastCardDate.append(currentDate);
-      //   forecastResultElm.append(forecastCardElm);
-      // }
     });
 };
 
 // Event listeners applied to search button
 searchBtnElm.addEventListener('click', formSubmitHander);
 
+// let forecastData = [cityName, temp, humidity, wind];
 // let weatherCardContainer = document.querySelector('#weather-card-container');
 // var weatherData = [{}, {}, {}, {}] // Pretend like this has data,
 
@@ -94,5 +98,15 @@ searchBtnElm.addEventListener('click', formSubmitHander);
 //     weatherCardContainer.append(weatherCard)
 // }
 
-// for(i = 0; 1 < 5; i++) {
-//   document.getElementById()
+// let dayForecast = response.list;
+//           for (let i = 5; i < dayForecast.length; i += 5) {
+//             document.getElementById('day' + [i + 1] + '-date').innerHTML = currentDate;
+//           }
+
+//           for (let i = 0; i < 5; i++) {
+//             document.getElementById('day' + [i + 1] + '-icon').src = 'http://openweathermap.org/img/wn/' + dayForecast[i].weather[0].icon + '@2x.png';
+//           }
+
+//           for (let i = 0; i < 5; i++) {
+//             document.getElementById('day' + [i + 1] + 'temp').innerHTML = dayForecast[i].main.temp;
+//           }
