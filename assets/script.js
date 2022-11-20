@@ -67,19 +67,16 @@ let searchResults = function () {
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
 
-          console.log(weatherForecastApi);
+          document.querySelector('.weekF').innerHTML = '';
+          for (let i = 5; i < response.list.length; i += 5) {
+            console.log(response.list[i]);
+            let divCard = document.createElement('div');
+            divCard.setAttribute('class', 'dayF');
 
-          function dayForecast(forecast) {
-            document.querySelector('.weekF').innerHTML = '';
-            for (let i = 5; i < forecast.list.length; i++) {
-              let divCard = document.createElement('div');
-              divCard.setAttribute('class', 'dayF');
-
-              let forecastDate = document.createElement('h1');
-              forecastDate.setAttribute('class', 'date', 'bg-blue-900', 'h-max');
-              forecastDate.innerHTML = currentDate;
-              divCard.appendChild(forecastDate);
-            }
+            let forecastDate = document.createElement('h1');
+            forecastDate.setAttribute('class', 'date', 'bg-blue-900', 'h-max');
+            forecastDate.innerHTML = currentDate;
+            divCard.appendChild(forecastDate);
           }
         });
     });
