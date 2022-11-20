@@ -68,15 +68,37 @@ let searchResults = function () {
           humidityElm.textContent = 'Humidity: ' + humidity;
 
           document.querySelector('.weekF').innerHTML = '';
-          for (let i = 5; i < response.list.length; i += 5) {
+          for (let i = 5; i < response.list.length; i += 7) {
             console.log(response.list[i]);
             let divCard = document.createElement('div');
-            divCard.setAttribute('class', 'dayF');
+            divCard.setAttribute('class', `bg-blue-900 h-max`);
 
             let forecastDate = document.createElement('h1');
-            forecastDate.setAttribute('class', 'date', 'bg-blue-900', 'h-max');
+            forecastDate.setAttribute('class', `text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8`);
             forecastDate.innerHTML = currentDate;
             divCard.appendChild(forecastDate);
+
+            let iconForest = document.createElement('i');
+            iconForest.setAttribute('class', `text-3xl mx8`);
+            iconForest.setAttribute('src', 'http://openweathermap.org/img/wn/' + response.list[i].weather[0].icon + '@2x.png');
+            divCard.appendChild(iconForest);
+
+            let tempForecast = document.createElement('p');
+            tempForecast.setAttribute('class', `text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6`);
+            tempForecast.innerHTML = 'Temp: ' + Math.floor(response.list[i].main.temp) + ' °F';
+            divCard.appendChild(tempForecast);
+
+            let windForecast = document.createElement('p');
+            windForecast.setAttribute('class', `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`);
+            windForecast.innerHTML = 'Wind: ' + response.list[i].wind.speed + ' MPH';
+            divCard.appendChild(windForecast);
+
+            let humidityForecast = document.createElement('p');
+            humidityForecast.setAttribute('class', `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`);
+            humidityForecast.innerHTML = 'Humidity: ' + response.list[i].main.humidity + '%';
+            divCard.appendChild(humidityForecast);
+
+            document.querySelector('.weekF').appendChild(divCard);
           }
         });
     });
