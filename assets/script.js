@@ -1,14 +1,11 @@
 // Variables declared to HTML elements for DOM manipulation
 const searchBtnElm = document.getElementById('search-btn');
-const searchHistoryElm = document.getElementById('search-history');
 const searchResultElm = document.getElementById('search-result');
-const forecastResultElm = document.getElementById('forecast-result');
 const cityNameElm = document.getElementById('city-name');
 const tempElm = document.getElementById('temp');
 const windElm = document.getElementById('wind');
 const humidityElm = document.getElementById('humidity');
 const searchInputElm = document.getElementById('search-input');
-const forecastCardElm = document.getElementById('forecast-card');
 
 let formSubmitHander = function (event) {
   event.preventDefault();
@@ -28,14 +25,18 @@ let formSubmitHander = function (event) {
 let searchResults = function () {
   let userSearch = searchInputElm.value;
   let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
-  weatherCoordsApi = weatherCoordsApi + '?q=' + userSearch + '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
+  weatherCoordsApi =
+    weatherCoordsApi +
+    '?q=' +
+    userSearch +
+    '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
 
   fetch(weatherCoordsApi)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      // console.log(response);
+      console.log(response);
       let city = response[0];
       let cityName = city.name;
       let latitude = city.lat;
@@ -43,10 +44,19 @@ let searchResults = function () {
 
       const key = 'f3dd875ac81e50aaada068245357b0ee&units=imperial';
 
-      let weatherForecastApi = 'https://api.openweathermap.org/data/2.5/forecast';
-      weatherForecastApi = weatherForecastApi + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + key;
+      let weatherForecastApi =
+        'https://api.openweathermap.org/data/2.5/forecast';
+      weatherForecastApi =
+        weatherForecastApi +
+        '?lat=' +
+        latitude +
+        '&lon=' +
+        longitude +
+        '&appid=' +
+        key;
 
-      let currentDate = dayjs().format('MM/DD/YYYY');
+      const currentDate = dayjs().format('MM/DD/YYYY');
+
       cityNameElm.textContent = cityName + ' ' + currentDate;
 
       fetch(weatherForecastApi)
@@ -58,7 +68,10 @@ let searchResults = function () {
           let temp = todayForecast.main.temp;
           let humidity = todayForecast.main.humidity;
           let wind = todayForecast.wind.speed;
-          let iconUrl = 'http://openweathermap.org/img/wn/' + todayForecast.weather[0].icon + '@2x.png';
+          let iconUrl =
+            'http://openweathermap.org/img/wn/' +
+            todayForecast.weather[0].icon +
+            '@2x.png';
           let iconElm = document.createElement('img');
 
           iconElm.setAttribute('src', iconUrl);
@@ -67,38 +80,88 @@ let searchResults = function () {
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
 
+          console.log(weatherForecastApi);
+
           document.querySelector('.weekF').innerHTML = '';
           for (let i = 5; i < response.list.length; i += 7) {
+            const forecastDates = new Date(response.list[i].dt * 1000);
+            console.log(forecastDates);
+            const forecastDay = forecastDates.getDate();
+            const forecastMonth = forecastDates.getMonth();
+            const forecastYear = forecastDates.getFullYear();
+
             console.log(response.list[i]);
             let divCard = document.createElement('div');
-            divCard.setAttribute('class', `bg-blue-900 h-max`);
+            divCard.setAttribute('class', `bg-blue-900 h-max rounded-lg`);
 
-            let forecastDate = document.createElement('h1');
-            forecastDate.setAttribute('class', `text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8`);
-            forecastDate.innerHTML = currentDate;
-            divCard.appendChild(forecastDate);
+            let forecastDateElm = document.createElement('h1');
+            forecastDateElm.setAttribute(
+              'class',
+              `text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8`
+            );
+            forecastDateElm.innerHTML =
+              forecastMonth + '/' + forecastDay + '/' + forecastYear;
+            divCard.appendChild(forecastDateElm);
 
-            let iconForest = document.createElement('i');
+            let iconForest = document.createElement('img');
             iconForest.setAttribute('class', `text-3xl mx8`);
-            iconForest.setAttribute('src', 'http://openweathermap.org/img/wn/' + response.list[i].weather[0].icon + '@2x.png');
+            iconForest.setAttribute(
+              'src',
+              'http://openweathermap.org/img/wn/' +
+                response.list[i].weather[0].icon +
+                '@2x.png'
+            );
             divCard.appendChild(iconForest);
 
             let tempForecast = document.createElement('p');
-            tempForecast.setAttribute('class', `text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6`);
-            tempForecast.innerHTML = 'Temp: ' + Math.floor(response.list[i].main.temp) + ' °F';
+            tempForecast.setAttribute(
+              'class',
+              `text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6`
+            );
+            tempForecast.innerHTML =
+              'Temp: ' + Math.floor(response.list[i].main.temp) + ' °F';
             divCard.appendChild(tempForecast);
 
             let windForecast = document.createElement('p');
-            windForecast.setAttribute('class', `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`);
-            windForecast.innerHTML = 'Wind: ' + response.list[i].wind.speed + ' MPH';
+            windForecast.setAttribute(
+              'class',
+              `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`
+            );
+            windForecast.innerHTML =
+              'Wind: ' + response.list[i].wind.speed + ' MPH';
             divCard.appendChild(windForecast);
 
             let humidityForecast = document.createElement('p');
-            humidityForecast.setAttribute('class', `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`);
-            humidityForecast.innerHTML = 'Humidity: ' + response.list[i].main.humidity + '%';
+            humidityForecast.setAttribute(
+              'class',
+              `text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6`
+            );
+            humidityForecast.innerHTML =
+              'Humidity: ' + response.list[i].main.humidity + '%';
             divCard.appendChild(humidityForecast);
 
             document.querySelector('.weekF').appendChild(divCard);
+          }
+
+          // Local storage for search history
+          function storeUserInput() {
+            let userInput = searchInputElm.value.trim();
+            let storedHistory = localStorage.setItem(
+              'userInput',
+              JSON.stringify(userInput)
+            );
+          }
+
+          function renderUserInput() {
+            let renderInput = JSON.parse(localStorage.getItem('userInput'));
+            if (renderInput) {
+              let renderHistory = document.createElement('button');
+              renderHistory.setAttribute(
+                'class',
+                `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
+              );
+              document.querySelector('.history').appendChild(renderHistory);
+            }
           }
         });
     });

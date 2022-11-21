@@ -11,78 +11,90 @@
   <body>
     <header>
       <div class="bg-gradient-to-r from-blue-400 to-blue-900 py-8">
-        <h1 class="text-4xl md:text-5xl text-center font-bold">Weather Forecast Dashboard</h1>
+        <h1 class="text-4xl md:text-5xl text-center font-bold">
+          Weather Forecast Dashboard
+        </h1>
       </div>
     </header>
     <section class="flex">
       <section class="max-w-[1240px] w-1/4">
         <section class="w-full border-b-4 m-2">
           <div class="flex flex-col w-full m-2">
-            <h1 class="text-2xlxl md:text-4xl font-bold text-center">Search for a City:</h1>
-            <input class="border mx-2 p-2 mt-2 md:mx-6 md:mt-4 md:p-4 rounded-md md:text-xl" id="search-input" type="text" placeholder="Enter City Here..." />
-            <button class="text-xl mx-2 p-2 my-2 bg-blue-500 md:mx-6 md:my-6 md:p-4 rounded-md md:text-2xl" id="search-btn">Search</button>
+            <h1 class="text-2xlxl md:text-4xl font-bold text-center">
+              Search for a City:
+            </h1>
+            <input
+              class="border mx-2 p-2 mt-2 md:mx-6 md:mt-4 md:p-4 rounded-md md:text-xl"
+              id="search-input"
+              type="text"
+              placeholder="Enter City Here..." />
+            <button
+              class="text-xl mx-2 p-2 my-2 bg-blue-500 md:mx-6 md:my-6 md:p-4 rounded-md md:text-2xl"
+              id="search-btn">
+              Search
+            </button>
           </div>
         </section>
         <section class="w-full mx-4">
-          <ul class="flex flex-col mx-2 my-2 md:mx-2 md:my-4" id="search-history">
-            <!-- <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Los Angeles</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">San Francisco</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">New York</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Chicago</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Boston</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Seattle</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Atlanta</li>
-            <li class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">Orlando</li> -->
-          </ul>
+          <div class="history flex flex-col mx-2 my-2 md:mx-2 md:my-4">
+            <!-- <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Los Angeles
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              San Francisco
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              New York
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Chicago
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Boston
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Seattle
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Atlanta
+            </button>
+            <button
+              class="border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500">
+              Orlando
+            </button> -->
+          </div>
         </section>
       </section>
       <section class="flex flex-col gap-2 w-3/4 mx-6 my-6">
-        <div class="border-4 border-slate-600 rounded-md" id="search-result">
-          <h1 id="city-name" class="text-xl md:text-5xl font-bold ml-4 mt-4 mb-8"></h1>
+        <div class="border-4 border-slate-600 rounded-lg" id="search-result">
+          <h1
+            id="city-name"
+            class="text-xl md:text-5xl font-bold ml-4 mt-4 mb-8"></h1>
           <ul>
-            <li id="temp" class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
-            <li id="wind" class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
-            <li id="humidity" class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
+            <li
+              id="temp"
+              class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
+            <li
+              id="wind"
+              class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
+            <li
+              id="humidity"
+              class="text-xl font-bold mx-2 my-2 md:text-3xl md:mx-4 md:my-8"></li>
           </ul>
         </div>
-        <h1 class="text-3xl mx-2 my-4 md:text-5xl font-bold md:mx-4 md:my-4">5-Day Forecast:</h1>
-        <div class="weekF flex flex-col gap-4 md:flex md:flex-col md:h-[20px] lg:flex lg:flex-row lg:justify-between lg:max-w-[1440px] mx-2 my-8" id="forecast-result">
-          <!-- <div class="bg-blue-900 h-max">
-            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8"></h1>
-            <i class="text-3xl text-yellow-500 mx-8" id="day1-icon"></i>
-            <p class="text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6">Temp: 60.01 degrees</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">WInd: 2.86 MPH</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">Humidity: 43%</p>
-          </div>
-          <div class="bg-blue-900 h-max">
-            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8"></h1>
-            <i class="text-3xl text-yellow-500 mx-8"></i>
-            <p class="text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6">Temp: 60.01 degrees</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">WInd: 2.86 MPH</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">Humidity: 43%</p>
-          </div>
-          <div class="bg-blue-900 h-max">
-            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8"></h1>
-            <i class="text-3xl text-yellow-500 mx-8"></i>
-            <p class="text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6">Temp: 60.01 degrees</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">WInd: 2.86 MPH</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">Humidity: 43%</p>
-          </div>
-          <div class="bg-blue-900 h-max">
-            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8"></h1>
-            <i class="text-3xl text-yellow-500 mx-8"></i>
-            <p class="text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6">Temp: 60.01 degrees</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">WInd: 2.86 MPH</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">Humidity: 43%</p>
-          </div>
-          <div class="bg-blue-900 h-max">
-            <h1 class="text-2xl p-2 mx-4 md:text-3xl font-bold text-white md:p-6 md:mx-8"></h1>
-            <i class="text-3xl text-yellow-500 mx-8"></i>
-            <p class="text-xl my-4 mx-2 p-2 md:text-2xl text-white md:my-6">Temp: 60.01 degrees</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">WInd: 2.86 MPH</p>
-            <p class="text-xl mx-2 my-2 p-2 md:text-2xl text-white md:my-6">Humidity: 43%</p>
-          </div> -->
-        </div>
+        <h1 class="text-3xl mx-2 my-4 md:text-5xl font-bold md:mx-4 md:my-4">
+          5-Day Forecast:
+        </h1>
+        <div
+          class="weekF flex flex-col gap-4 md:flex md:flex-col md:h-[20px] lg:flex lg:flex-row lg:justify-between lg:max-w-[1440px] mx-2 my-8"
+          id="forecast-result"></div>
       </section>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
