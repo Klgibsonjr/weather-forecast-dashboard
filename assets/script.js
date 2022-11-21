@@ -6,6 +6,8 @@ const tempElm = document.getElementById('temp');
 const windElm = document.getElementById('wind');
 const humidityElm = document.getElementById('humidity');
 const searchInputElm = document.getElementById('search-input');
+const searchHistoryElm = document.getElementById('history-container');
+let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
 
 let formSubmitHander = function (event) {
   event.preventDefault();
@@ -36,7 +38,6 @@ let searchResults = function () {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
       let city = response[0];
       let cityName = city.name;
       let latitude = city.lat;
@@ -80,17 +81,15 @@ let searchResults = function () {
           windElm.textContent = 'Wind: ' + wind;
           humidityElm.textContent = 'Humidity: ' + humidity;
 
-          console.log(weatherForecastApi);
-
           document.querySelector('.weekF').innerHTML = '';
           for (let i = 5; i < response.list.length; i += 7) {
             const forecastDates = new Date(response.list[i].dt * 1000);
-            console.log(forecastDates);
+
             const forecastDay = forecastDates.getDate();
             const forecastMonth = forecastDates.getMonth();
             const forecastYear = forecastDates.getFullYear();
 
-            console.log(response.list[i]);
+            // console.log(response.list[i]);
             let divCard = document.createElement('div');
             divCard.setAttribute('class', `bg-blue-900 h-max rounded-lg`);
 
@@ -142,53 +141,43 @@ let searchResults = function () {
 
             document.querySelector('.weekF').appendChild(divCard);
           }
-
-          // Local storage for search history
-          function storeUserInput() {
-            let userInput = searchInputElm.value.trim();
-            let storedHistory = localStorage.setItem(
-              'userInput',
-              JSON.stringify(userInput)
-            );
-          }
-
-          function renderUserInput() {
-            let renderInput = JSON.parse(localStorage.getItem('userInput'));
-            if (renderInput) {
-              let renderHistory = document.createElement('button');
-              renderHistory.setAttribute(
-                'class',
-                `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
-              );
-              document.querySelector('.history').appendChild(renderHistory);
-            }
-          }
         });
     });
+
+  return;
+};
+
+// Local storage for search history
+searchBtnElm.addEventListener('click', function () {
+  const searchTerm = searchInputElm.value;
+  searchResults(searchTerm);
+  searchHistory.push(searchTerm);
+  localStorage.setItem('search', JSON.stringify(searchHistory));
+  renderHistory();
+});
+
+let renderHistory = function () {
+  searchHistoryElm.innerHTML = '';
+  for (let i = 0; i < searchHistory.length; i++) {
+    const historyItem = document.createElement('button');
+    historyItem.setAttribute('type', 'button');
+    historyItem.setAttribute(
+      'class',
+      `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
+    );
+    historyItem.setAttribute('value', searchHistory[i]);
+    historyItem.addEventListener('click', function () {
+      searchResults(historyItem.value);
+    });
+    searchHistoryElm.append(historyItem);
+  }
+
+  if (searchHistory.length > 0) {
+    searchResults(searchHistory[searchHistory.length - 1]);
+  } else {
+    return;
+  }
 };
 
 // Event listeners applied to search button
-searchBtnElm.addEventListener('click', formSubmitHander);
-
-// let forecastData = [cityName, temp, humidity, wind];
-// let weatherCardContainer = document.querySelector('#weather-card-container');
-// var weatherData = [{}, {}, {}, {}] // Pretend like this has data,
-
-// for(var i = 0 ; i < weatherData.length; i++) {
-//     var weatherCard = document.createElement('div');
-//     weatherCard.classList = 'my-3 d-flex align-items-center';
-//     weatherCardContainer.append(weatherCard)
-// }
-
-// let dayForecast = response.list;
-//           for (let i = 5; i < dayForecast.length; i += 5) {
-//             document.getElementById('day' + [i + 1] + '-date').innerHTML = currentDate;
-//           }
-
-//           for (let i = 0; i < 5; i++) {
-//             document.getElementById('day' + [i + 1] + '-icon').src = 'http://openweathermap.org/img/wn/' + dayForecast[i].weather[0].icon + '@2x.png';
-//           }
-
-//           for (let i = 0; i < 5; i++) {
-//             document.getElementById('day' + [i + 1] + 'temp').innerHTML = dayForecast[i].main.temp;
-//           }
+searchBtnElm.addEventListener('click', formSubmitHander, searchResults);
