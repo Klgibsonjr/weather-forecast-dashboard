@@ -22,7 +22,7 @@ Two APIs from OpenWeatherMap were actually implemented. The first API was to fet
 
 The second API used the coordinates obtained by the first API to retrieve the weather information for whatever city the user inputs.
 
-#####Current/Forecast Weather API
+##### Current/Forecast Weather API
 
 > https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
