@@ -36,6 +36,6 @@ Below is a screenshot of the weather application in action displaying the curren
 
 ## LINKS
 
-> - Deployed application:
+> - Deployed application: https://klgibsonjr.github.io/weather-forecast-dashboard/
 
-> - Github repository:
+> - Github repository: https://github.com/Klgibsonjr/weather-forecast-dashboard
