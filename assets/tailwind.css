@@ -552,11 +552,6 @@ video {
   margin-bottom: 2rem;
 }
 
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -580,6 +575,22 @@ video {
 .h-max {
   height: -moz-max-content;
   height: max-content;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+.max-h-\[1240px\] {
+  max-height: 1240px;
+}
+
+.max-h-\[1440px\] {
+  max-height: 1440px;
+}
+
+.max-h-\[2160px\] {
+  max-height: 2160px;
 }
 
 .w-1\/4 {

@@ -7,7 +7,6 @@ const windElm = document.getElementById('wind');
 const humidityElm = document.getElementById('humidity');
 const searchInputElm = document.getElementById('search-input');
 const searchHistoryElm = document.getElementById('history-container');
-let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
 
 let formSubmitHander = function (event) {
   event.preventDefault();
@@ -24,8 +23,8 @@ let formSubmitHander = function (event) {
   }
 };
 
-let searchResults = function () {
-  let userSearch = searchInputElm.value;
+let searchResults = function (searchTerm) {
+  let userSearch = searchTerm || searchInputElm.value;
   let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
   weatherCoordsApi =
     weatherCoordsApi +
@@ -73,6 +72,8 @@ let searchResults = function () {
             'http://openweathermap.org/img/wn/' +
             todayForecast.weather[0].icon +
             '@2x.png';
+          console.log(iconUrl);
+
           let iconElm = document.createElement('img');
 
           iconElm.setAttribute('src', iconUrl);
@@ -148,31 +149,35 @@ let searchResults = function () {
 };
 
 // Local storage for search history
-// searchBtnElm.addEventListener('click', function () {
-//   const searchTerm = searchInputElm.value;
-//   searchResults(searchTerm);
-//   searchHistory.push(searchTerm);
-//   localStorage.setItem('search', JSON.stringify(searchHistory));
-//   renderHistory();
-// });
+searchBtnElm.addEventListener('click', function () {
+  let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
+  const searchTerm = searchInputElm.value;
+  searchResults(searchTerm);
+  searchHistory.push(searchTerm);
+  localStorage.setItem('search', JSON.stringify(searchHistory));
+  renderHistory();
+});
 
-// let renderHistory = function () {
-//   searchHistoryElm.innerHTML = '';
-//   for (let i = 0; i < searchHistory.length; i++) {
-//     const historyItem = document.createElement('button');
-//     historyItem.setAttribute('type', 'button');
-//     historyItem.setAttribute(
-//       'class',
-//       `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
-//     );
-//     historyItem.setAttribute('value', searchHistory[i]);
-//     historyItem.addEventListener('click', function () {
-//       searchResults(historyItem.value);
-//     });
-//     searchHistoryElm.append(historyItem);
-//   }
+let renderHistory = function () {
+  searchHistoryElm.innerHTML = '';
+  let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
+  for (let i = 0; i < searchHistory.length; i++) {
+    const historyItem = document.createElement('button');
+    historyItem.setAttribute('type', 'button');
+    historyItem.setAttribute(
+      'class',
+      `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
+    );
+    historyItem.setAttribute('value', searchHistory[i]);
+    historyItem.textContent = searchHistory[i];
+
+    searchHistoryElm.append(historyItem);
+  }
+};
+
+searchHistoryElm.addEventListener('click', function (event) {
+  event.preventDefault();
+  searchResults(event.target.textContent);
+});
 
 //
-
-// Event listeners applied to search button
-searchBtnElm.addEventListener('click', formSubmitHander, searchResults);
