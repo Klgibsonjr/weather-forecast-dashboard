@@ -25,6 +25,8 @@ let formSubmitHander = function (event) {
 
 let searchResults = function (searchTerm) {
   let userSearch = searchTerm || searchInputElm.value;
+
+  // This API is used to obtain the coordinates for the cities inputted by the user
   let weatherCoordsApi = 'https://api.openweathermap.org/geo/1.0/direct';
   weatherCoordsApi =
     weatherCoordsApi +
@@ -32,6 +34,7 @@ let searchResults = function (searchTerm) {
     userSearch +
     '&limit=&appid=f3dd875ac81e50aaada068245357b0ee';
 
+  // Fetch function used to obtain the coordinates from the cities inputted by the user
   fetch(weatherCoordsApi)
     .then(function (response) {
       return response.json();
@@ -44,6 +47,7 @@ let searchResults = function (searchTerm) {
 
       const key = 'f3dd875ac81e50aaada068245357b0ee&units=imperial';
 
+      // This API is used to to obtain the weather information for the inputted cities using the coordinates fetched from the previous request
       let weatherForecastApi =
         'https://api.openweathermap.org/data/2.5/forecast';
       weatherForecastApi =
@@ -55,15 +59,18 @@ let searchResults = function (searchTerm) {
         '&appid=' +
         key;
 
+      // A variable declared to store the current date for the current weather
       const currentDate = dayjs().format('MM/DD/YYYY');
 
       cityNameElm.textContent = cityName + ' ' + currentDate;
 
+      // Fetch request used to obtain the weather forecast information
       fetch(weatherForecastApi)
         .then(function (response) {
           return response.json();
         })
         .then(function (response) {
+          // All the weather forecast information needed to display the forecast
           let todayForecast = response.list[0];
           let temp = todayForecast.main.temp;
           let humidity = todayForecast.main.humidity;
@@ -72,7 +79,6 @@ let searchResults = function (searchTerm) {
             'http://openweathermap.org/img/wn/' +
             todayForecast.weather[0].icon +
             '@2x.png';
-          console.log(iconUrl);
 
           let iconElm = document.createElement('img');
 
@@ -83,14 +89,18 @@ let searchResults = function (searchTerm) {
           humidityElm.textContent = 'Humidity: ' + humidity;
 
           document.querySelector('.weekF').innerHTML = '';
+
+          // This for loop cycles through the data retrieved form the API and sets a limit for 5 days
           for (let i = 5; i < response.list.length; i += 7) {
+            // Retrieves the date for each date of the forecast
             const forecastDates = new Date(response.list[i].dt * 1000);
 
+            // Retrieves only the month, day and full from the date data to format the forecast date
             const forecastDay = forecastDates.getDate();
             const forecastMonth = forecastDates.getMonth();
             const forecastYear = forecastDates.getFullYear();
 
-            // console.log(response.list[i]);
+            // Dynamically creating the appropriate HTML elements needed to display the weather information
             let divCard = document.createElement('div');
             divCard.setAttribute('class', `bg-blue-900 h-max rounded-lg`);
 
@@ -140,6 +150,7 @@ let searchResults = function (searchTerm) {
               'Humidity: ' + response.list[i].main.humidity + '%';
             divCard.appendChild(humidityForecast);
 
+            // Once all of the HTML elements have been dynamically created, this appends the information onto the application
             document.querySelector('.weekF').appendChild(divCard);
           }
         });
@@ -148,7 +159,7 @@ let searchResults = function (searchTerm) {
   return;
 };
 
-// Local storage for search history
+// Event listener used to store the search input into local storage for later retrieval
 searchBtnElm.addEventListener('click', function () {
   let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
   const searchTerm = searchInputElm.value;
@@ -158,6 +169,7 @@ searchBtnElm.addEventListener('click', function () {
   renderHistory();
 });
 
+// This function dynamically renders the search history onto the page
 let renderHistory = function () {
   searchHistoryElm.innerHTML = '';
   let searchHistory = JSON.parse(localStorage.getItem('search')) || [];
@@ -175,6 +187,7 @@ let renderHistory = function () {
   }
 };
 
+// Event listener added to the search history results to redisplay a previously searched city
 searchHistoryElm.addEventListener('click', function (event) {
   event.preventDefault();
   searchResults(event.target.textContent);
