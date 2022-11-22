@@ -148,36 +148,31 @@ let searchResults = function () {
 };
 
 // Local storage for search history
-searchBtnElm.addEventListener('click', function () {
-  const searchTerm = searchInputElm.value;
-  searchResults(searchTerm);
-  searchHistory.push(searchTerm);
-  localStorage.setItem('search', JSON.stringify(searchHistory));
-  renderHistory();
-});
+// searchBtnElm.addEventListener('click', function () {
+//   const searchTerm = searchInputElm.value;
+//   searchResults(searchTerm);
+//   searchHistory.push(searchTerm);
+//   localStorage.setItem('search', JSON.stringify(searchHistory));
+//   renderHistory();
+// });
 
-let renderHistory = function () {
-  searchHistoryElm.innerHTML = '';
-  for (let i = 0; i < searchHistory.length; i++) {
-    const historyItem = document.createElement('button');
-    historyItem.setAttribute('type', 'button');
-    historyItem.setAttribute(
-      'class',
-      `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
-    );
-    historyItem.setAttribute('value', searchHistory[i]);
-    historyItem.addEventListener('click', function () {
-      searchResults(historyItem.value);
-    });
-    searchHistoryElm.append(historyItem);
-  }
+// let renderHistory = function () {
+//   searchHistoryElm.innerHTML = '';
+//   for (let i = 0; i < searchHistory.length; i++) {
+//     const historyItem = document.createElement('button');
+//     historyItem.setAttribute('type', 'button');
+//     historyItem.setAttribute(
+//       'class',
+//       `border rounded-md mx-2 my-2 p-2 md:mx-4 md:my-4 text-center md:p-4 font-bold text-xl bg-gray-500`
+//     );
+//     historyItem.setAttribute('value', searchHistory[i]);
+//     historyItem.addEventListener('click', function () {
+//       searchResults(historyItem.value);
+//     });
+//     searchHistoryElm.append(historyItem);
+//   }
 
-  if (searchHistory.length > 0) {
-    searchResults(searchHistory[searchHistory.length - 1]);
-  } else {
-    return;
-  }
-};
+//
 
 // Event listeners applied to search button
 searchBtnElm.addEventListener('click', formSubmitHander, searchResults);
